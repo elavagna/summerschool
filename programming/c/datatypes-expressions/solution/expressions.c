@@ -2,8 +2,8 @@
 
 int main(int argc, char *argv[])
 {
-    int a, b, c;
-    float d, e, f;
+    int a, b, c, e;
+    float d, f;
     double g, h, o;
 
     a = 4;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     g = 4.1;
     h = -3;
-    o = g - 2.0 / e;
+    o = 2.0 / e;
     printf("o is %.9f\n", o);
 
     a = 2 * d - f / 5.6;

@@ -15,8 +15,22 @@ int main(void)
 
     /* Add here a for loop that at each iteration prints out
        the current value of the power and updates val */
-#error Add the missing loop
+    //#error Add the missing loop
 
+
+ 
+    for (n=0; n<N+1; n++) {
+      if (n==0)     printf("\t  0 \t    1\n");
+
+      else {
+	for (int i=0; i<n; i++) {
+	  val *= k;
+	}
+	printf("\t  %d \t    %d\n", n,val);
+	val = 1;
+      }
+    }
+    
     return 0;
 }
 
