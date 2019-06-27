@@ -8,6 +8,13 @@
 #define DX 0.01
 #define DY 0.01
 
+typedef struct {
+	int nx, ny;
+	float dx, dy;
+	float dx2, dy2;
+	float temperature[NX+2][NY+2];
+} field;
+
 int main(void)
 {
     int i, j, error_code;
@@ -36,14 +43,21 @@ int main(void)
     for (i = 0; i < NX; i++) {
         laplacian[i][0] = laplacian[i][NY - 1] = 0.0;
     }
-    for (j = 0; i < NY; j++) {
+    for (j = 0; j < NY; j++) {
         laplacian[0][j] = laplacian[NX - 1][j] = 0.0;
     }
 
 
     // Evaluate the Laplacian
     // *INDENT-OFF*
-#error Add the missing part
+    float dx2=DX*DX; float dy2= DY*DY;
+
+    for (i = 1; i < NX - 1; i++) {
+	    for (j = 1; j < NY - 1; j++) {
+		    laplacian[i][j]=(array[i-1][j]-2*array[i][j]+array[i+1][j])/dx2+(array[i][j-1]-2*array[i][j]+array[i][j+1])/dy2;
+	    }
+    }
+    //#error Add the missing part
 
     // *INDENT-ON*
 

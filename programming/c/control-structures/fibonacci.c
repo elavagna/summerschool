@@ -8,8 +8,8 @@ int main(int argc, char **argv[])
   f2 = f1 + f0;
   N = (int) argv[1];
 
-  printf("Up to %s\n", argv[1]);
-  printf("Up to %d\n", N);
+//  printf("Up to %s\n", argv[1]);
+//  printf("Up to %d\n", N);
   printf("%d\n",f0);
   
   while (f2<N) {

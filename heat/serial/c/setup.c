@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <math.h>
 
 #include "heat.h"
 #include "pngwriter.h"
@@ -80,13 +81,27 @@ void generate_field(field *temperature)
     double radius;
     int dx, dy;
 
+    int center_x, center_y;
+    double distance;
+
     /* Allocate the temperature array, note that
      * we have to allocate also the ghost layers */
     temperature->data =
         malloc_2d(temperature->nx + 2, temperature->ny + 2);
 
+    radius = temperature->nx / 6;
+    center_x = temperature->nx+2 / 2;
+    center_y = temperature->ny+2 / 2;
+
     /* TODO: Initialize the values of temperature */
-#error Add field initialization
+    for (i=0; i<temperature->nx+2; i++) {
+	    for (j=0; j<temperature->ny+2; j++) {
+		    double distance = sqrt((i-center_x)*(i-center_x)+(j-center_y)*(j-center_y));
+		    if (distance < radius)	temperature->data[i][j] = 95;
+		    else temperature->data[i][j] = 0;
+	    }
+    }
+//#error Add field initialization
 
 }
 
