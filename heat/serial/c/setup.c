@@ -96,11 +96,12 @@ void generate_field(field *temperature)
     /* TODO: Initialize the values of temperature */
     for (i=0; i<temperature->nx+2; i++) {
 	    for (j=0; j<temperature->ny+2; j++) {
-		    double distance = sqrt((i-center_x)*(i-center_x)+(j-center_y)*(j-center_y));
-		    if (distance < radius)	temperature->data[i][j] = 95;
+		    double distance = (i-center_x)*(i-center_x)+(j-center_y)*(j-center_y);
+		    if (distance < radius*radius)	temperature->data[i][j] = 95;
 		    else temperature->data[i][j] = 0;
 	    }
     }
+    write_field(temperature,1111);
 //#error Add field initialization
 
 }

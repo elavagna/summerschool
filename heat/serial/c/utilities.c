@@ -15,7 +15,13 @@ double **malloc_2d(int nx, int ny)
     int i;
 
     /* TODO: Add here the 2D array allocation */
-#error Add allocation of 2D array
+    array = (double **) malloc((nx + 2) * sizeof(double *));
+    array[0] = (double *) malloc((nx + 2) * (ny + 2) * sizeof(double));
+    for (int k=0; k < (nx + 2); k++) {
+	    array[k] = array[0] + k * (ny + 2); 
+    }
+    
+	//#error Add allocation of 2D array
 
     return array;
 }

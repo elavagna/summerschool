@@ -14,7 +14,7 @@ ifeq ($(COMP),cray)
 CC=cc
 CCFLAGS=-O3 -I/appl/opt/libpng/include -I$(COMMONDIR)
 LDFLAGS=-L/appl/opt/libpng/lib
-LIBS=-lpng -lz
+LIBS=-lpng -lz -lm
 endif
 
 ifeq ($(COMP),gnu)
