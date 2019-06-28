@@ -34,13 +34,22 @@ int main(int argc, char *argv[])
 	MPI_Sendrecv(message,msgsize,MPI_INT,myid+1,myid+1,receiveBuffer,msgsize,MPI_INT,myid-1,myid,MPI_COMM_WORLD, &status);
         printf("Sender: %d. Sent elements: %d. Tag: %d. Receiver: %d\n",
                myid, msgsize, myid + 1, myid + 1);
+        printf("Receiver: %d. first element %d.\n",
+               myid, receiveBuffer[0]);
     }
 
-    if (myid = 0) {
+    if (myid == ntasks-1) {
 	MPI_Recv(receiveBuffer,msgsize,MPI_INT,myid-1,myid,MPI_COMM_WORLD, &status);
         printf("Receiver: %d. first element %d.\n",
                myid, receiveBuffer[0]);
     }
+
+    if (myid == 0) {
+	MPI_Send(message,msgsize,MPI_INT,myid+1,myid+1,MPI_COMM_WORLD);
+	printf("Sender: %d. Sent elements: %d. Tag: %d. Receiver: %d\n",
+               myid, msgsize, myid + 1, myid + 1);
+    }
+
     /* TODO end */
 
     /* Finalize measuring the time and print it out */
