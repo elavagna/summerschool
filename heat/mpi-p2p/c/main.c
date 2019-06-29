@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     double dt;                  //!< Time step
     int nsteps;                 //!< Number of time steps
 
-    int image_interval = 500;    //!< Image output interval
+    int image_interval = 50;    //!< Image output interval
 
     parallel_data parallelization; //!< Parallelization info
 
@@ -26,8 +26,11 @@ int main(int argc, char **argv)
     double dx2, dy2;            //!< delta x and y squared
 
     double start_clock;        //!< Time stamps
+	
 
     /* TODO start: initialize MPI */
+
+	MPI_Init(&argc, &argv);
 
     /* TODO end */
 
@@ -65,6 +68,8 @@ int main(int argc, char **argv)
     finalize(&current, &previous);
 
     /* TODO start: finalize MPI */
+	
+	MPI_Finalize();
 
     /* TODO end */
 
