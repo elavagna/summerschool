@@ -21,7 +21,7 @@ int main(void)
     /* TODO: Parallelize computation */
 #pragma omp parallel default(shared)
 {
-	#pragma omp for
+	#pragma omp for reduction(+:sum)
     	for (i = 0; i < NX; i++) {
         	sum += vecA[i];
     	}

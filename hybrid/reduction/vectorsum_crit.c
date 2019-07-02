@@ -21,8 +21,9 @@ int main(void)
     /* TODO: Parallelize computation */
 #pragma omp parallel default(shared)
 {
-	#pragma omp for
+	#pragma omp for default(shared) private(i)
     	for (i = 0; i < NX; i++) {
+		#pragma omp critical(vecsum)
         	sum += vecA[i];
     	}
 }

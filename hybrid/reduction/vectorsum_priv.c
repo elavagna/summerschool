@@ -21,10 +21,13 @@ int main(void)
     /* TODO: Parallelize computation */
 #pragma omp parallel default(shared)
 {
-	#pragma omp for
+	psum = 0;
+	#pragma omp for default(shared) private(i,psum)
     	for (i = 0; i < NX; i++) {
         	sum += vecA[i];
     	}
+	#pragma omp critical
+	sum += psum;
 }
     printf("Sum: %ld\n", sum);
 
